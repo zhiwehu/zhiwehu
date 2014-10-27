@@ -19,7 +19,6 @@ BASE_DIR = dirname(dirname(__file__))
 
 
 class Common(Configuration):
-
     # APP CONFIGURATION
     DJANGO_APPS = (
         # Default Django apps:
@@ -85,7 +84,7 @@ class Common(Configuration):
     # SECRET CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
     # Note: This key only used for development and testing.
-    #       In production, this is changed to a values.SecretValue() setting
+    # In production, this is changed to a values.SecretValue() setting
     SECRET_KEY = "CHANGEME!!!"
     # END SECRET CONFIGURATION
 
@@ -112,7 +111,16 @@ class Common(Configuration):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://localhost/zhiwehu')
+    DATABASES = DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'zhiwehu',
+            'USER': 'zhiwehu',
+            'PASSWORD': 'password',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
     # END DATABASE CONFIGURATION
 
     # CACHING
@@ -128,10 +136,10 @@ class Common(Configuration):
 
     # GENERAL CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
-    TIME_ZONE = 'America/Los_Angeles'
+    TIME_ZONE = 'Asia/Shanghai'
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-    LANGUAGE_CODE = 'en-us'
+    LANGUAGE_CODE = 'zh-CN'
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
     SITE_ID = 1
