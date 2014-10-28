@@ -34,4 +34,10 @@ urlpatterns = patterns('',
                            view=PostDetailView.as_view(),
                            name='post_detail'
                        ),
+
+                       url(
+                           regex=r'^add/comment/$',
+                           view='post.views.add_comment',
+                           name='add_comment',
+                       ),
 )

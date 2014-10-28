@@ -1,10 +1,13 @@
-from django.db.models import Count
-from django.http import Http404
-from django.shortcuts import get_object_or_404
-from django.views.generic import ListView, DetailView
+import json
 
-from .models import Category, Post
+from django.db.models import Count
+from django.http import Http404, JsonResponse
+from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_http_methods
+from django.views.generic import ListView, DetailView
 from taggit.models import Tag
+from .models import Category, Post, Comment
+from .forms import CommentForm
 
 
 class PostListView(ListView):
@@ -54,7 +57,8 @@ class PostListView(ListView):
         context['tag'] = self.tag
         context['year'] = self.year
         context['month'] = self.month
-        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values('date_created').annotate(
+        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values(
+            'date_created').annotate(
             post_count=Count('id'))[:12]
         return context
 
@@ -74,6 +78,48 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
         context['tags'] = Tag.objects.all()
-        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values('date_created').annotate(
+        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values(
+            'date_created').annotate(
             post_count=Count('id'))[:12]
         return context
+
+
+@require_http_methods(['POST'])
+def add_comment(request):
+    post = None
+    post_id = int(request.POST.get('post_id', -1))
+    if post_id:
+        try:
+            post = Post.objects.get(id=post_id)
+        except Post.DoesNotExist:
+            pass
+
+    if post == None:
+        return JsonResponse({'status':'error', 'message':'the post does not exist'})
+
+    form = CommentForm(data=request.POST)
+    if form.is_valid():
+        comment = form.save(commit=False)
+        comment.post = post
+
+        if request.user.is_authenticated():
+            comment.user = request.user
+            comment.user_name = request.user.username
+            comment.user_email = request.user.email
+            comment.user_website = request.user.website
+
+        parent = None
+        parent_id = request.POST.get('parent_id', None)
+        if parent_id:
+            try:
+                parent = Comment.objects.get(id=parent_id)
+            except Exception:
+                pass
+        comment.parent = parent
+
+        if comment.user and comment.user.is_staff:
+            comment.approved = True
+        comment.save()
+        return JsonResponse(comment.json)
+    else:
+        return JsonResponse({'status':'error', 'message':'post data error'})

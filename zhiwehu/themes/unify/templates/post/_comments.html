@@ -1,0 +1,56 @@
+{% load staticfiles %}
+
+<div id="comments">
+    {% if post.approved_comments %}
+        <hr>
+        <!-- Recent Comments -->
+
+        {% for comment in post.approved_comments %}
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object comment-user-avatar"
+                         src="{% static 'img/sliders/elastislide/2.jpg' %}"
+                         alt="{{ comment.user_name }}"/>
+                </a>
+
+                <div class="media-body">
+                    <h4 class="media-heading">
+                        {{ comment.user_name }}
+                                        <span>{{ comment.created|timesince }} / <a class="reply_comment"
+                                                                                   data-comment_id="{{ comment.id }}"
+                                                                                   href="#comment_form">回复</a></span>
+                    </h4>
+
+                    <p>
+                        {{ comment.content }}
+                    </p>
+
+                    {% for reply in comment.approved_replies %}
+                        <hr>
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object comment-user-avatar"
+                                     src="{% static 'img/sliders/elastislide/2.jpg' %}"
+                                     alt="{{ reply.user_name }}"/>
+                            </a>
+
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    {{ reply.user_name }}
+                                    <span>{{ reply.created|timesince }}</span></h4>
+
+                                <p>{{ reply.content }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        <!--/media-->
+        <!-- End Recent Comments -->
+    {% endif %}
+
+    <hr>
+
+    {% include "post/_comment_form.html" %}
+</div>

@@ -44,7 +44,10 @@ class Post(TimeStampedModel):
 
     @property
     def comment_count(self):
-        return self.comment_set.count()
+        return self.comment_set.filter(approved=True).count()
+
+    def approved_comments(self):
+        return self.comment_set.filter(approved=True)
 
 
 class Comment(TimeStampedModel):
@@ -59,3 +62,26 @@ class Comment(TimeStampedModel):
 
     def __unicode__(self):
         return self.content
+
+    def approved_replies(self):
+        return self.comment_set.filter(approved=True)
+
+    @property
+    def json(self):
+        user_id = None
+        if self.user:
+            user_id = self.user.id
+
+        parent_id = None
+        if self.parent:
+            parent_id = self.parent.id
+
+        return {
+            'post_id': self.post.id,
+            'content': self.content,
+            'user_id': user_id,
+            'parent_id': parent_id,
+            'user_name': self.user_name,
+            'user_email': self.user_email,
+            'user_website': self.user_website,
+        }
