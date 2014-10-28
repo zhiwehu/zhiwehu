@@ -41,12 +41,16 @@ class Common(Configuration):
         'allauth',  # registration
         'allauth.account',  # registration
         'allauth.socialaccount',  # registration
+        'taggit',
+        'tinymce',
+        'bootstrap3',
     )
 
     # Apps specific for this project go here.
     LOCAL_APPS = (
         'users',  # custom users app
         # Your stuff: custom apps go here
+        'post',
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -111,7 +115,7 @@ class Common(Configuration):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = DATABASES = {
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'zhiwehu',
@@ -274,3 +278,14 @@ class Common(Configuration):
     # END LOGGING CONFIGURATION
 
     # Your common stuff: Below this line define 3rd party library settings
+
+    # Tinymce
+    # TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
+    TINYMCE_DEFAULT_CONFIG = {
+        'plugins': 'table,spellchecker,paste,searchreplace',
+        'theme': 'advanced',
+        'cleanup_on_startup': True,
+        'custom_undo_redo_levels': 10,
+    }
+    TINYMCE_SPELLCHECKER = True
+    TINYMCE_COMPRESSOR = True
