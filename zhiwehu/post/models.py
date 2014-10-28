@@ -47,7 +47,7 @@ class Post(TimeStampedModel):
         return self.comment_set.filter(approved=True).count()
 
     def approved_comments(self):
-        return self.comment_set.filter(approved=True)
+        return self.comment_set.filter(approved=True, parent__isnull=True)
 
 
 class Comment(TimeStampedModel):
