@@ -42,6 +42,10 @@ class Post(TimeStampedModel):
     def __unicode__(self):
         return self.title
 
+    @property
+    def comment_count(self):
+        return self.comment_set.count()
+
 
 class Comment(TimeStampedModel):
     post = models.ForeignKey(Post)

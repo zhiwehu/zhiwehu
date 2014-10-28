@@ -8,7 +8,7 @@ from .models import Category, Post, Comment
 
 
 class PostForm(forms.ModelForm):
-    content = forms.CharField(widget=TinyMCE(attrs={'cols': 80, 'rows': 10}))
+    content = forms.CharField(widget=TinyMCE(attrs={'cols': 150, 'rows': 40}))
 
     class Meta:
         model = Post

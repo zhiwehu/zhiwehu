@@ -102,8 +102,8 @@ class Production(Common):
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-dirs
     TEMPLATE_LOADERS = (
         ('django.template.loaders.cached.Loader', (
-            'django.template.loaders.filesystem.Loader',
             'django.template.loaders.app_directories.Loader',
+            'django.template.loaders.filesystem.Loader',
         )),
     )
     # END TEMPLATE CONFIGURATION

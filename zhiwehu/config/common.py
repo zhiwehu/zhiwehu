@@ -21,6 +21,8 @@ BASE_DIR = dirname(dirname(__file__))
 class Common(Configuration):
     # APP CONFIGURATION
     DJANGO_APPS = (
+        'themes.unify',
+
         # Default Django apps:
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -180,8 +182,8 @@ class Common(Configuration):
     )
 
     TEMPLATE_LOADERS = (
-        'django.template.loaders.filesystem.Loader',
         'django.template.loaders.app_directories.Loader',
+        'django.template.loaders.filesystem.Loader',
     )
 
     # See: http://django-crispy-forms.readthedocs.org/en/latest/install.html#template-packs

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles bootstrap3 cache %}
+
+{% block content %}
+    <div class="container content">
+        <div class="row blog-page">
+            <!-- Left Sidebar -->
+            <div class="col-md-9">
+
+                {% for post in post_list %}
+                    <!--Blog Post-->
+                    <div class="blog margin-bottom-40">
+                        {% include "post/_post_basic.html" %}
+
+                        <p>
+                            {{ post.summary }}
+                        </p>
+
+                        <p>
+                            <a class="btn-u btn-u-small" href="{% url "post_detail" post.slug %}">
+                                <i class="fa fa-plus-sign"></i>
+                                Read More
+                            </a>
+                        </p>
+                    </div>
+                    <!--End Blog Post-->
+                {% endfor %}
+
+                <!--Pagination-->
+                {% if is_paginated %}
+                    <div class="text-center">
+                        {% bootstrap_pagination page_obj %}
+                    </div>
+                {% endif %}
+                <!--End Pagination-->
+            </div>
+            <!-- End Left Sidebar -->
+
+            {% include "post/_right_sidebar.html" %}
+        </div>
+        <!--/row-->
+    </div>
+    <!--/container-->
+{% endblock %}

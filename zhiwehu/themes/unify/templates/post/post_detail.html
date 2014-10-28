@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles bootstrap3 cache %}
+
+{% block content %}
+    <div class="container content">
+        <div class="row blog-page blog-item">
+            <!-- Left Sidebar -->
+            <div class="col-md-9 md-margin-bottom-60">
+                <!--Blog Post-->
+                <div class="blog margin-bottom-40">
+                    {% include "post/_post_basic.html" %}
+
+                    <div>{{ post.content|safe }}</div>
+                </div>
+                <!--End Blog Post-->
+                <div id="comments">
+                    {% if post.approved_comments %}
+                        <hr>
+                        <!-- Recent Comments -->
+
+                        <!-- TODO: need to filter the approved comments -->
+                        {% for comment in post.approved_comments %}
+                            <div class="media">
+                                <a class="pull-left" href="#">
+                                    <img class="media-object" src="{% static 'img/sliders/elastislide/2.jpg' %}"
+                                         alt=""/>
+                                </a>
+
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <span>{{ comment.created|timesince }} / <a href="#">Reply</a></span>
+                                    </h4>
+
+                                    <p>
+                                        {{ comment.content }}
+                                    </p>
+
+                                    {% for reply in comment.approved_replies %}
+                                        <hr>
+                                        <div class="media">
+                                            <a class="pull-left" href="#">
+                                                <img class="media-object"
+                                                     src="{% static 'img/sliders/elastislide/2.jpg' %}"
+                                                     alt=""/>
+                                            </a>
+
+                                            <div class="media-body">
+                                                <h4 class="media-heading">
+                                                    <span>{{ reply.created|timesince }}</span></h4>
+
+                                                <p>{{ reply.content }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!--/media-->
+                        <!-- End Recent Comments -->
+                    {% endif %}
+
+                    <hr>
+
+                    <!-- Comment Form -->
+                    <div class="post-comment">
+                        <h3>发表评论</h3>
+
+                        <form>
+                            <label>姓名</label>
+
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <label>邮箱</label>
+
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <label>网站</label>
+
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-7 col-md-offset-0">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            <label>评论 <span class="color-red">*</span></label>
+
+                            <div class="row margin-bottom-20">
+                                <div class="col-md-11 col-md-offset-0">
+                                    <textarea class="form-control" rows="8"></textarea>
+                                </div>
+                            </div>
+
+                            <p>
+                                <button class="btn-u" type="submit">发表评论</button>
+                            </p>
+                        </form>
+                    </div>
+                    <!-- End Comment Form -->
+                </div>
+            </div>
+            <!-- End Left Sidebar -->
+
+            {% include "post/_right_sidebar.html" %}
+        </div>
+        <!--/row-->
+    </div><!--/container-->
+{% endblock %}

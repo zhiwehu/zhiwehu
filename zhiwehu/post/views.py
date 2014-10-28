@@ -1,7 +1,6 @@
 from django.db.models import Count
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-from django.core.cache import cache
 from django.views.generic import ListView, DetailView
 
 from .models import Category, Post
@@ -55,7 +54,7 @@ class PostListView(ListView):
         context['tag'] = self.tag
         context['year'] = self.year
         context['month'] = self.month
-        context['month_list'] = Post.objects.extra({'date_created': 'date(created)'}).values('date_created').annotate(
+        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values('date_created').annotate(
             post_count=Count('id'))[:12]
         return context
 
@@ -70,3 +69,11 @@ class PostDetailView(DetailView):
         if slug:
             return get_object_or_404(Post, slug=slug)
         raise Http404
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context['category_list'] = Category.objects.all()
+        context['tags'] = Tag.objects.all()
+        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values('date_created').annotate(
+            post_count=Count('id'))[:12]
+        return context

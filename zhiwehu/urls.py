@@ -12,8 +12,6 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^', include('post.urls')),
-
                        url(r'^about/$',
                            TemplateView.as_view(template_name='pages/about.html'),
                            name="about"),
@@ -30,5 +28,7 @@ urlpatterns = patterns('',
 
                        # Your stuff: custom urls go here
                        url(r'^tinymce/', include('tinymce.urls')),
+
+                       url(r'^', include('post.urls')),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

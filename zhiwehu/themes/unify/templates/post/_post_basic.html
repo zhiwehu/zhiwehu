@@ -1,0 +1,32 @@
+<h2>
+    <a href="{% url "post_detail" post.slug %}">
+        {{ post.title }}
+    </a>
+</h2>
+
+<div class="blog-post-tags">
+    <ul class="list-unstyled list-inline blog-info">
+        <li><i class="fa fa-calendar"></i> {{ post.created }}</li>
+        <li><i class="fa fa-pencil"></i> {{ post.author }}</li>
+        <li><i class="fa fa-comments"></i>
+            <a href="{% url 'post_detail' post.slug %}#comments">{{ post.comment_count }} Comments</a>
+        </li>
+    </ul>
+    {% with post.tags.all as post_tags %}
+        {% if post_tags %}
+            <ul class="list-unstyled list-inline blog-tags">
+                <li>
+                    <i class="fa fa-tags"></i>
+                    {% for tag in post_tags %}
+                        <a href="{% url "tag_post_list" tag.slug %}">{{ tag.name }}</a>
+                    {% endfor %}
+                </li>
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+{% if post.thumbnail_url %}
+    <div class="blog-img">
+        <img class="img-responsive" src="{{ post.thumbnail_url }}" alt="{{ post.title }}">
+    </div>
+{% endif %}
