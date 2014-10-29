@@ -34,22 +34,22 @@ def update_requirements():
 def syncdb():
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
-            run('python manage.py syncdb --settings=config.settings.production')
+            run('python manage.py syncdb --settings=config.production')
 
 
 def migrate(app=None):
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
             if app:
-                run('python manage.py migrate --settings=config.settings.production --noinput %s' % app)
+                run('python manage.py migrate --settings=config.production --noinput %s' % app)
             else:
-                run('python manage.py migrate --settings=config.settings.production --noinput')
+                run('python manage.py migrate --settings=config.production --noinput')
 
 
 def collectstatic():
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
-            run('python manage.py collectstatic --settings=config.settings.production --noinput')
+            run('python manage.py collectstatic --settings=config.production --noinput')
 
 
 def restart():
