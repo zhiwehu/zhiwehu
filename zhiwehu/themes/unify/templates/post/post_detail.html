@@ -65,7 +65,7 @@
                         } else {
                             $form[0].reset();
                             if (result.approved == false) {
-                                alert("谢谢评论，内容将在审核通过后显示在此页。")
+                                alert("{% trans "Thanks for comment. Your comment will be show after approve." %}")
                             } else {
                                 window.location = "{% url "post_detail" post.slug %}";
                             }

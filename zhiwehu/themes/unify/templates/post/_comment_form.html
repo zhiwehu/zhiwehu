@@ -1,8 +1,8 @@
-{% load staticfiles %}
+{% load i18n staticfiles %}
 
 <!-- Comment Form -->
 <div class="post-comment">
-    <h3>发表评论</h3>
+    <h3>{% trans "Post Comment" %}</h3>
 
     <form id="comment_form">
         <input type="hidden" name="post_id" value="{{ post.id }}">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         {% else %}
-            <label>姓名 <span class="color-red">*</span></label>
+            <label>{% trans "Name" %} <span class="color-red">*</span></label>
 
             <div class="row margin-bottom-20">
                 <div class="col-md-7 col-md-offset-0">
@@ -34,7 +34,7 @@
                 </div>
             </div>
 
-            <label>邮箱</label>
+            <label>{% trans "Email" %}</label>
 
             <div class="row margin-bottom-20">
                 <div class="col-md-7 col-md-offset-0">
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <label>网站</label>
+            <label>{% trans "Website" %}</label>
 
             <div class="row margin-bottom-20">
                 <div class="col-md-7 col-md-offset-0">
@@ -52,7 +52,7 @@
             </div>
         {% endif %}
 
-        <label>评论 (最多1024字符)<span class="color-red">*</span></label>
+        <label>{% trans "Comment Content" %} ({% trans "The limit is 1024 chars" %})<span class="color-red">*</span></label>
 
         <div class="row margin-bottom-20">
             <div class="col-md-11 col-md-offset-0">
@@ -62,7 +62,7 @@
         </div>
 
         <p>
-            <button class="btn-u" type="submit">发表评论</button>
+            <button class="btn-u" type="submit">{% trans "Post Comment" %}</button>
         </p>
     </form>
 </div>

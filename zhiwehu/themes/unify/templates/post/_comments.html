@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load i18n staticfiles %}
 
 <div id="comments">
     {% if post.approved_comments %}
@@ -16,9 +16,11 @@
                 <div class="media-body">
                     <h4 class="media-heading">
                         {{ comment.user_name }}
-                                        <span>{{ comment.created|timesince }} / <a class="reply_comment"
-                                                                                   data-comment_id="{{ comment.id }}"
-                                                                                   href="#comment_form">回复</a></span>
+                        <span>{{ comment.created|timesince }} /
+                            <a class="reply_comment" data-comment_id="{{ comment.id }}" href="#comment_form">
+                                {% trans "Reply" %}
+                            </a>
+                        </span>
                     </h4>
 
                     <p>

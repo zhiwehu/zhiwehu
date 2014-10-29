@@ -1,10 +1,9 @@
-import json
-
 from django.db.models import Count
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
 from django.views.generic import ListView, DetailView
+from django.utils.translation import ugettext_lazy as _
 from taggit.models import Tag
 from .models import Category, Post, Comment
 from .forms import CommentForm
@@ -95,7 +94,7 @@ def add_comment(request):
             pass
 
     if post == None:
-        return JsonResponse({'status':'error', 'message':'the post does not exist'})
+        return JsonResponse({'status': 'error', 'message': _(u'the post does not exist')})
 
     form = CommentForm(data=request.POST)
     if form.is_valid():
@@ -122,4 +121,4 @@ def add_comment(request):
         comment.save()
         return JsonResponse(comment.json)
     else:
-        return JsonResponse({'status':'error', 'message':'post data error'})
+        return JsonResponse({'status': 'error', 'message': _(u'post data error')})

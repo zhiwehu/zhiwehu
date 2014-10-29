@@ -1,4 +1,4 @@
-{% load cache %}
+{% load i18n cache %}
 
 {% cache 600 right_sidebar %}
     <!-- Right Sidebar -->
@@ -14,7 +14,7 @@
         <div class="input-group margin-bottom-40">
             <input type="text" class="form-control" placeholder="Search">
                     <span class="input-group-btn">
-                        <button class="btn-u" type="button">Go</button>
+                        <button class="btn-u" type="button">{% trans "Search" %}</button>
                     </span>
         </div>
         <!-- End Search Bar -->
@@ -23,7 +23,7 @@
         <div class="headline headline-md">
             <h2>
                 <i class="icon-layers"></i>
-                类别
+                {% trans "Category" %}
             </h2>
 
         </div>
@@ -44,7 +44,7 @@
         <div class="headline headline-md">
             <h2>
                 <i class="icon-tag"></i>
-                标签
+                {% trans "Tags" %}
             </h2>
         </div>
         <ul class="list-unstyled blog-tags margin-bottom-40">
@@ -63,7 +63,7 @@
         <div class="headline headline-md">
             <h2>
                 <i class="icon-clock"></i>
-                存档
+                {% trans "Archives" %}
             </h2>
         </div>
         <ul class="list-unstyled margin-bottom-40">
@@ -82,7 +82,7 @@
         <div class="headline headline-md">
             <h2>
                 <i class="icon-link"></i>
-                链接
+                {% trans "Links" %}
             </h2>
         </div>
         <ul class="list-unstyled margin-bottom-40">

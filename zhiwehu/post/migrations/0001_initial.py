@@ -24,6 +24,7 @@ class Migration(migrations.Migration):
                 ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, verbose_name='created', editable=False)),
                 ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, verbose_name='modified', editable=False)),
                 ('title', models.CharField(max_length=255)),
+                ('slug', autoslug.fields.AutoSlugField(unique=True, editable=False)),
                 ('description', models.TextField(max_length=1024, null=True, blank=True)),
                 ('thumbnail_url', models.URLField(null=True, blank=True)),
             ],
@@ -68,7 +69,7 @@ class Migration(migrations.Migration):
                 ('tags', taggit.managers.TaggableManager(to='taggit.Tag', through='taggit.TaggedItem', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags')),
             ],
             options={
-                'abstract': False,
+                'ordering': ['-created'],
             },
             bases=(models.Model,),
         ),

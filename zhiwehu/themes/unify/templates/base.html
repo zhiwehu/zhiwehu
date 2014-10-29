@@ -6,7 +6,7 @@
 <!--[if !IE]><!-->
 <html lang="en"> <!--<![endif]-->
 <head>
-    <title>{% block title %}知为乎{% endblock %}</title>
+    <title>{% block title %}{% trans "zhiwehu" %}{% endblock %}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -97,12 +97,12 @@
             <div class="row">
                 <div class="col-md-6">
                     <p>
-                        2014 &copy; 知为乎. ALL Rights Reserved.
+                        2014 &copy; {% trans "zhiwehu" %}. ALL Rights Reserved.
                     </p>
                 </div>
                 <div class="col-md-6">
                     <a href="/">
-                        <img class="pull-right" id="logo-footer" src="{% static 'img/logo2-default.png' %}" alt="知为乎">
+                        <img class="pull-right" id="logo-footer" src="{% static 'img/logo2-default.png' %}" alt="{% trans "zhiwehu" %}">
                     </a>
                 </div>
             </div>

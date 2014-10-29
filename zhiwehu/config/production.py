@@ -2,26 +2,13 @@
 '''
 Production Configurations
 
-- Use djangosecure
-- Use Amazon's S3 for storing static files and uploaded media
-- Use sendgird to sendemails
-- Use MEMCACHIER on Heroku
 '''
 from configurations import values
-
-# See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
-# try:
-#     from S3 import CallingFormat
-#     AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
-# except ImportError:
-#     # TODO: Fix this where even if in Dev this class is called.
-#     pass
 
 from .common import Common
 
 
 class Production(Common):
-
     # This ensures that Django will be able to detect a secure connection
     # properly on Heroku.
     # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -51,7 +38,7 @@ class Production(Common):
     # SITE CONFIGURATION
     # Hosts/domain names that are valid for this site
     # See https://docs.djangoproject.com/en/1.6/ref/settings/#allowed-hosts
-    ALLOWED_HOSTS = ["*"]
+    ALLOWED_HOSTS = ['121.40.126.220', 'zhiwehu.com', 'www.zhiwehu.com']
     # END SITE CONFIGURATION
 
     INSTALLED_APPS += ("gunicorn", )
@@ -59,7 +46,7 @@ class Production(Common):
     # STORAGE CONFIGURATION
     # See: http://django-storages.readthedocs.org/en/latest/index.html
     # INSTALLED_APPS += (
-    #     'storages',
+    # 'storages',
     # )
 
     # See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
@@ -88,14 +75,14 @@ class Production(Common):
     # END STORAGE CONFIGURATION
 
     # EMAIL
-    DEFAULT_FROM_EMAIL = values.Value('zhiwehu <noreply@zhiwehu.com>')
-    EMAIL_HOST = values.Value('smtp.sendgrid.com')
-    EMAIL_HOST_PASSWORD = values.SecretValue(environ_prefix="", environ_name="SENDGRID_PASSWORD")
-    EMAIL_HOST_USER = values.SecretValue(environ_prefix="", environ_name="SENDGRID_USERNAME")
-    EMAIL_PORT = values.IntegerValue(587, environ_prefix="", environ_name="EMAIL_PORT")
-    EMAIL_SUBJECT_PREFIX = values.Value('[zhiwehu] ', environ_name="EMAIL_SUBJECT_PREFIX")
-    EMAIL_USE_TLS = True
-    SERVER_EMAIL = EMAIL_HOST_USER
+    # DEFAULT_FROM_EMAIL = values.Value('zhiwehu <noreply@zhiwehu.com>')
+    # EMAIL_HOST = values.Value('smtp.sendgrid.com')
+    # EMAIL_HOST_PASSWORD = values.SecretValue(environ_prefix="", environ_name="SENDGRID_PASSWORD")
+    # EMAIL_HOST_USER = values.SecretValue(environ_prefix="", environ_name="SENDGRID_USERNAME")
+    # EMAIL_PORT = values.IntegerValue(587, environ_prefix="", environ_name="EMAIL_PORT")
+    # EMAIL_SUBJECT_PREFIX = values.Value('[zhiwehu] ', environ_name="EMAIL_SUBJECT_PREFIX")
+    # EMAIL_USE_TLS = True
+    # SERVER_EMAIL = EMAIL_HOST_USER
     # END EMAIL
 
     # TEMPLATE CONFIGURATION
@@ -111,12 +98,13 @@ class Production(Common):
     # CACHING
     # Only do this here because thanks to django-pylibmc-sasl and pylibmc
     # memcacheify is painful to install on windows.
-    try:
-        # See: https://github.com/rdegges/django-heroku-memcacheify
-        from memcacheify import memcacheify
-        CACHES = memcacheify()
-    except ImportError:
-        CACHES = values.CacheURLValue(default="memcached://127.0.0.1:11211")
-    # END CACHING
+    # try:
+    #     # See: https://github.com/rdegges/django-heroku-memcacheify
+    #     from memcacheify import memcacheify
+    #
+    #     CACHES = memcacheify()
+    # except ImportError:
+    #     CACHES = values.CacheURLValue(default="memcached://127.0.0.1:11211")
+        # END CACHING
 
-    # Your production stuff: Below this line define 3rd party libary settings
+        # Your production stuff: Below this line define 3rd party libary settings

@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <h2>
     <a href="{% url "post_detail" post.slug %}">
         {{ post.title }}
@@ -9,7 +11,7 @@
         <li><i class="fa fa-calendar"></i> {{ post.created }}</li>
         <li><i class="fa fa-pencil"></i> {{ post.author }}</li>
         <li><i class="fa fa-comments"></i>
-            <a href="{% url 'post_detail' post.slug %}#comments">{{ post.comment_count }} Comments</a>
+            <a href="{% url 'post_detail' post.slug %}#comments">{{ post.comment_count }} {% trans "Comments" %}</a>
         </li>
     </ul>
     {% with post.tags.all as post_tags %}
