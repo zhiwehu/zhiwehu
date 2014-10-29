@@ -32,6 +32,9 @@ class CategoryAdmin(admin.ModelAdmin):
 def approve_comment(modeladmin, request, queryset):
     queryset.update(approved=True)
 
+def disapprove_comment(modeladmin, request, queryset):
+    queryset.update(approved=False)
+
 
 approve_comment.short_description = 'Approve selected comments'
 
