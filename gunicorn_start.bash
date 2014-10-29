@@ -6,7 +6,7 @@ SOCKFILE=/home/ecs-user/gunicorn.sock                                # we will c
 USER=ecs-user                                                        # the user to run as
 GROUP=ecs-user                                                       # the group to run as
 NUM_WORKERS=3                                                        # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE=config.settings.production                    # which settings file should Django use
+DJANGO_SETTINGS_MODULE=config                                        # which settings file should Django use
 DJANGO_WSGI_MODULE=wsgi                                              # WSGI module name
 
 echo "Starting $NAME as `whoami`"
