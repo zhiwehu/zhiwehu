@@ -8,9 +8,13 @@
         {% for comment in post.approved_comments %}
             <div class="media">
                 <a class="pull-left" href="#">
-                    <img class="media-object comment-user-avatar"
-                         src="{{ comment.user.avatar_url }}"
-                         alt="{{ comment.user_name }}"/>
+                    {% if comment.user.avatar_url %}
+                        <img class="media-object comment-user-avatar"
+                             src="{{ comment.user.avatar_url }}"
+                             alt="{{ comment.user_name }}"/>
+                    {% else %}
+                        <img data-src="holder.js/54x54/text:{{ comment.user_name|upper|slice:":2" }}">
+                    {% endif %}
                 </a>
 
                 <div class="media-body">
@@ -31,9 +35,13 @@
                         <hr>
                         <div class="media">
                             <a class="pull-left" href="#">
-                                <img class="media-object comment-user-avatar"
-                                     src="{{ comment.user.avatar_url }}"
-                                     alt="{{ reply.user_name }}"/>
+                                {% if reply.user.avatar_url %}
+                                    <img class="media-object comment-user-avatar"
+                                         src="{{ reply.user.avatar_url }}"
+                                         alt="{{ reply.user_name }}"/>
+                                {% else %}
+                                    <img data-src="holder.js/54x54/text:{{ reply.user_name|upper|slice:":2" }}">
+                                {% endif %}
                             </a>
 
                             <div class="media-body">
