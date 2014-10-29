@@ -94,6 +94,7 @@ class Production(Common):
         )),
     )
     # END TEMPLATE CONFIGURATION
+    CACHES = values.CacheURLValue(default="memcached://127.0.0.1:11211")
 
     # CACHING
     # Only do this here because thanks to django-pylibmc-sasl and pylibmc
