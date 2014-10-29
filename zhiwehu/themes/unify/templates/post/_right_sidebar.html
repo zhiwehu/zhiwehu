@@ -4,17 +4,14 @@
 <div class="col-md-3 magazine-page">
 
     <!-- Search Bar -->
-    <div class="headline headline-md">
-        <h2>
-            <i class="icon-magnifier"></i>
-            {% trans "Search" %}
-        </h2>
-    </div>
+
     <div class="input-group margin-bottom-40">
-        <input type="text" class="form-control" placeholder="{% trans "Search" %}">
-                    <span class="input-group-btn">
-                        <button class="btn-u" type="button">{% trans "Search" %}</button>
-                    </span>
+        <form action="/search" class="form-inline" role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" name="q" value="{{ query }}">
+            </div>
+            <button type="submit" class="btn-u">{% trans "Search" %}</button>
+        </form>
     </div>
     <!-- End Search Bar -->
 

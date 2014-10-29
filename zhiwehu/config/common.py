@@ -41,6 +41,7 @@ class Common(Configuration):
         'taggit',
         'tinymce',
         'bootstrap3',
+        'haystack',
     )
 
     # Apps specific for this project go here.
@@ -287,3 +288,10 @@ class Common(Configuration):
     LOCALE_PATHS = (
         join(os.path.dirname(BASE_DIR), 'zhiwehu', 'locale')
     )
+
+    HAYSTACK_CONNECTIONS = {
+        'default': {
+            'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+            'PATH': join(BASE_DIR, 'whoosh_index'),
+        },
+    }
