@@ -175,8 +175,8 @@ class Common(Configuration):
     )
 
     TEMPLATE_LOADERS = (
-        'django.template.loaders.app_directories.Loader',
         'django.template.loaders.filesystem.Loader',
+        'django.template.loaders.app_directories.Loader',
     )
 
     # See: http://django-crispy-forms.readthedocs.org/en/latest/install.html#template-packs
@@ -283,7 +283,3 @@ class Common(Configuration):
     }
     TINYMCE_SPELLCHECKER = True
     TINYMCE_COMPRESSOR = True
-
-    LOCALE_PATHS = (
-        join(os.path.dirname(BASE_DIR), 'zhiwehu', 'locale')
-    )

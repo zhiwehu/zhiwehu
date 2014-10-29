@@ -12,6 +12,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
         model = Post
+        exclude = ('created', 'modified')
 
 
 class PostAdmin(admin.ModelAdmin):
