@@ -3,7 +3,17 @@
 {% block title %}Page Not found{% endblock %}
 
 {% block content %}
-<h1>Page Not found</h1>
+    <!--Error Block-->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="error-v1">
+                <span class="error-v1-title">404</span>
+                <span>出错了!</span>
 
-<p>This is not the page you were looking for.</p>
+                <p>您请求的页面不存在。</p>
+                <a class="btn-u btn-bordered" href="/">返回首页</a>
+            </div>
+        </div>
+    </div>
+    <!--End Error Block-->
 {% endblock content %}
