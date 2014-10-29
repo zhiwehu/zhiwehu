@@ -12,7 +12,7 @@ env.hosts = ['121.40.126.220']
 env.user = 'ecs-user'
 env.password = 'Bclt2014'
 env.code_dir = '/home/ecs-user/zhiwehu'
-env.project_div = '/home/ecs-user/zhiwehu/zhiwehu'
+env.project_div = '/home/ecs-user/zhiwehu'
 env.virtualenv = '/home/ecs-user/env'
 
 
@@ -34,22 +34,22 @@ def update_requirements():
 def syncdb():
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
-            run('python manage.py syncdb --settings=config.production')
+            run('python zhiwehu/manage.py syncdb --configuration=Production')
 
 
 def migrate(app=None):
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
             if app:
-                run('python manage.py migrate --settings=config.production --noinput %s' % app)
+                run('python zhiwehu/manage.py migrate --configuration=Production --noinput %s' % app)
             else:
-                run('python manage.py migrate --settings=config.production --noinput')
+                run('python zhiwehu/manage.py migrate --configuration=Production --noinput')
 
 
 def collectstatic():
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
-            run('python manage.py collectstatic --settings=config.production --noinput')
+            run('python zhiwehu/manage.py collectstatic --configuration=Production --noinput')
 
 
 def restart():
