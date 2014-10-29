@@ -70,7 +70,10 @@ class PostDetailView(DetailView):
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug', None)
         if slug:
-            return get_object_or_404(Post, slug=slug)
+            post = get_object_or_404(Post, slug=slug)
+            post.view_count = post.view_count + 1
+            post.save()
+            return post
         raise Http404
 
     def get_context_data(self, **kwargs):
