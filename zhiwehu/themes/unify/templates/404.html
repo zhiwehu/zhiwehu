@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block title %}Page Not found{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "css/pages/page_404_error.css" %}">
+{% endblock %}
 
 {% block content %}
     <!--Error Block-->
