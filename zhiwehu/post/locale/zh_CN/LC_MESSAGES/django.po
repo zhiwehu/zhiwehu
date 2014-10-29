@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-29 23:28+0800\n"
+"POT-Creation-Date: 2014-10-30 00:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,14 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: post/views.py:97
-msgid "the post does not exist"
-msgstr "这篇文章不存在"
-
-#: post/views.py:124
-msgid "post data error"
-msgstr "数据错误"
 
 #: themes/unify/templates/base.html:9 themes/unify/templates/base.html:100
 #: themes/unify/templates/base.html:105
@@ -69,6 +61,7 @@ msgid "Comments"
 msgstr "评论"
 
 #: themes/unify/templates/post/_right_sidebar.html:10
+#: themes/unify/templates/post/_right_sidebar.html:14
 #: themes/unify/templates/post/_right_sidebar.html:16
 msgid "Search"
 msgstr "查询"
@@ -92,3 +85,13 @@ msgstr "链接"
 #: themes/unify/templates/post/post_detail.html:68
 msgid "Thanks for comment. Your comment will be show after approve."
 msgstr "感谢评论，评论内容将在审核后显示"
+
+#: themes/unify/templates/post/post_list.html:23
+msgid "Read More"
+msgstr "阅读"
+
+msgid "the post does not exist"
+msgstr "这篇文章不存在"
+
+msgid "post data error"
+msgstr "数据错误"
