@@ -283,3 +283,7 @@ class Common(Configuration):
     }
     TINYMCE_SPELLCHECKER = True
     TINYMCE_COMPRESSOR = True
+
+    LOCALE_PATHS = (
+        join(os.path.dirname(BASE_DIR), 'zhiwehu', 'locale')
+    )
