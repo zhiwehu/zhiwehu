@@ -37,6 +37,7 @@ def disapprove_comment(modeladmin, request, queryset):
 
 
 approve_comment.short_description = 'Approve selected comments'
+disapprove_comment.short_description = 'Disapprove selected comments'
 
 
 class CommentAdmin(admin.ModelAdmin):
