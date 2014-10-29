@@ -1,5 +1,6 @@
-{% load i18n %}
+{% load i18n cache %}
 
+{% cache 600 sidebar %}
     <!-- Right Sidebar -->
     <div class="col-md-3 magazine-page">
 
@@ -99,3 +100,4 @@
         <!-- End Links -->
     </div>
     <!-- End Right Sidebar -->
+{% endcache %}
