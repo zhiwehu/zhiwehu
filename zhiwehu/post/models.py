@@ -32,7 +32,7 @@ class Post(TimeStampedModel):
     content = models.TextField()
     summary = models.CharField(max_length=1024, blank=True, null=True)
     tags = TaggableManager(blank=True)
-    thumbnail_url = models.URLField(blank=True, null=True)
+    thumbnail_url = models.URLField(blank=True, null=True, help_text='Size: 848x307')
     view_count = models.PositiveIntegerField(default=0)
     like_count = models.PositiveIntegerField(default=0)
 
