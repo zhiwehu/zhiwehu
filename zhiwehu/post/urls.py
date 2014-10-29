@@ -30,7 +30,7 @@ urlpatterns = patterns('',
                        ),
 
                        url(
-                           regex=r'^(?P<slug>[\w-]+)/$',
+                           regex=r'^blog/(?P<slug>[\w-]+)/$',
                            view=PostDetailView.as_view(),
                            name='post_detail'
                        ),

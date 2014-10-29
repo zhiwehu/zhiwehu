@@ -25,8 +25,8 @@ urlpatterns = patterns('',
                        # Your stuff: custom urls go here
                        url(r'^tinymce/', include('tinymce.urls')),
 
-                       url(r'^', include('post.urls')),
-
                        url(r'^search/', include('haystack.urls')),
+
+                       url(r'^', include('post.urls')),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
