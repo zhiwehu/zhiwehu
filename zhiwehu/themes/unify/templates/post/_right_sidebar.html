@@ -1,103 +1,101 @@
-{% load i18n cache %}
+{% load i18n %}
 
-{% cache 600 sidebar %}
-    <!-- Right Sidebar -->
-    <div class="col-md-3 magazine-page">
+<!-- Right Sidebar -->
+<div class="col-md-3 magazine-page">
 
-        <!-- Search Bar -->
-        <div class="headline headline-md">
-            <h2>
-                <i class="icon-magnifier"></i>
-                {% trans "Search" %}
-            </h2>
-        </div>
-        <div class="input-group margin-bottom-40">
-            <input type="text" class="form-control" placeholder="Search">
+    <!-- Search Bar -->
+    <div class="headline headline-md">
+        <h2>
+            <i class="icon-magnifier"></i>
+            {% trans "Search" %}
+        </h2>
+    </div>
+    <div class="input-group margin-bottom-40">
+        <input type="text" class="form-control" placeholder="Search">
                     <span class="input-group-btn">
                         <button class="btn-u" type="button">{% trans "Search" %}</button>
                     </span>
-        </div>
-        <!-- End Search Bar -->
-
-        <!-- Blog Category -->
-        <div class="headline headline-md">
-            <h2>
-                <i class="icon-layers"></i>
-                {% trans "Category" %}
-            </h2>
-
-        </div>
-        <ul class="list-unstyled margin-bottom-40">
-            {% for c in category_list %}
-                <li class="margin-bottom-10">
-                    <a href="{% url 'category_post_list' c.slug %}">
-                        {{ c.title }}
-                        <span class="badge pull-right">{{ c.post_count }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <!-- End Blog Category -->
-
-        <!-- Blog Tags -->
-        <div class="headline headline-md">
-            <h2>
-                <i class="icon-tag"></i>
-                {% trans "Tags" %}
-            </h2>
-        </div>
-        <ul class="list-unstyled blog-tags margin-bottom-40">
-            {% for tag in tags %}
-                <li>
-                    <a href="{% url 'tag_post_list' tag.slug %}">
-                        {{ tag.name }}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-
-        <!-- End Blog Tags -->
-
-        <!-- Blog Archive -->
-        <div class="headline headline-md">
-            <h2>
-                <i class="icon-clock"></i>
-                {% trans "Archives" %}
-            </h2>
-        </div>
-        <ul class="list-unstyled margin-bottom-40">
-            {% for month in month_list %}
-                <li class="margin-bottom-10">
-                    <a href="{% url 'archive_post_list' month.date_created.year month.date_created.month %}">
-                        {{ month.date_created|date:'Y年F' }}
-                        <span class="badge pull-right">{{ month.post_count }}</span>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-        <!-- End Blog Archive -->
-
-        <!-- Links -->
-        <div class="headline headline-md">
-            <h2>
-                <i class="icon-link"></i>
-                {% trans "Links" %}
-            </h2>
-        </div>
-        <ul class="list-unstyled margin-bottom-40">
-            <li class="margin-bottom-10">
-                <a href="#">
-                    Lettoo
-                </a>
-            </li>
-            <li class="margin-bottom-10">
-                <a href="#">
-                    Lettoo
-                </a>
-            </li>
-        </ul>
-        <!-- End Links -->
     </div>
-    <!-- End Right Sidebar -->
-{% endcache %}
+    <!-- End Search Bar -->
+
+    <!-- Blog Category -->
+    <div class="headline headline-md">
+        <h2>
+            <i class="icon-layers"></i>
+            {% trans "Category" %}
+        </h2>
+
+    </div>
+    <ul class="list-unstyled margin-bottom-40">
+        {% for c in category_list %}
+            <li class="margin-bottom-10">
+                <a href="{% url 'category_post_list' c.slug %}">
+                    {{ c.title }}
+                    <span class="badge pull-right">{{ c.post_count }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- End Blog Category -->
+
+    <!-- Blog Tags -->
+    <div class="headline headline-md">
+        <h2>
+            <i class="icon-tag"></i>
+            {% trans "Tags" %}
+        </h2>
+    </div>
+    <ul class="list-unstyled blog-tags margin-bottom-40">
+        {% for tag in tags %}
+            <li>
+                <a href="{% url 'tag_post_list' tag.slug %}">
+                    {{ tag.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- End Blog Tags -->
+
+    <!-- Blog Archive -->
+    <div class="headline headline-md">
+        <h2>
+            <i class="icon-clock"></i>
+            {% trans "Archives" %}
+        </h2>
+    </div>
+    <ul class="list-unstyled margin-bottom-40">
+        {% for month in month_list %}
+            <li class="margin-bottom-10">
+                <a href="{% url 'archive_post_list' month.date_created.year month.date_created.month %}">
+                    {{ month.date_created|date:'Y年F' }}
+                    <span class="badge pull-right">{{ month.post_count }}</span>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <!-- End Blog Archive -->
+
+    <!-- Links -->
+    <div class="headline headline-md">
+        <h2>
+            <i class="icon-link"></i>
+            {% trans "Links" %}
+        </h2>
+    </div>
+    <ul class="list-unstyled margin-bottom-40">
+        <li class="margin-bottom-10">
+            <a href="#">
+                Lettoo
+            </a>
+        </li>
+        <li class="margin-bottom-10">
+            <a href="#">
+                Lettoo
+            </a>
+        </li>
+    </ul>
+    <!-- End Links -->
+</div>
+<!-- End Right Sidebar -->
