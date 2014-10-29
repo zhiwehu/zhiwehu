@@ -52,6 +52,12 @@ def collectstatic():
             run('python manage.py collectstatic --configuration=Production --noinput')
 
 
+def rebuild_index():
+    with cd(env.project_div):
+        with prefix("source %s/bin/activate" % (env.virtualenv)):
+            run('python manage.py rebuild_index --configuration=Production --noinput')
+
+
 def restart():
     "Restart (or just start) the server"
     with cd(env.project_div):
@@ -70,4 +76,5 @@ def deploy():
     syncdb()
     migrate()
     collectstatic()
+    rebuild_index()
     restart()

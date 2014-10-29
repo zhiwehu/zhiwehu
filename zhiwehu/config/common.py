@@ -283,7 +283,7 @@ class Common(Configuration):
         'custom_undo_redo_levels': 10,
     }
     TINYMCE_SPELLCHECKER = True
-    TINYMCE_COMPRESSOR = True
+    TINYMCE_COMPRESSOR = False
 
     LOCALE_PATHS = (
         join(os.path.dirname(BASE_DIR), 'zhiwehu', 'locale')
