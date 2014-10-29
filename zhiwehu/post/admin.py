@@ -29,13 +29,21 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'description', 'created']
 
 
+def approve_comment(modeladmin, request, queryset):
+    queryset.update(approved=True)
+
+
+approve_comment.short_description = 'Approve selected comments'
+
+
 class CommentAdmin(admin.ModelAdmin):
     list_display = [
-        'id', 'post', 'content', 'parent', 'user', 'user_name', 'approved', 'created'
+        'id', 'post', 'content', 'parent', 'user', 'user_name', 'user_email', 'user_website', 'approved', 'created'
     ]
     search_fields = [
         'content'
     ]
+    actions = [approve_comment]
 
 
 admin.site.register(Post, PostAdmin)
