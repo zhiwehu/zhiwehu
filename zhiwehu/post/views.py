@@ -13,7 +13,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'post/post_list.html'
     context_object_name = 'post_list'
-    paginate_by = 3
+    paginate_by = 5
 
     def get_queryset(self):
         post_list = Post.objects.all()
