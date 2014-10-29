@@ -20,7 +20,7 @@ class Category(TimeStampedModel):
 
     @property
     def post_count(self):
-        return self.post_set.count()
+        return self.post_set.filter(published=True).count()
 
 
 # Post model
@@ -35,6 +35,7 @@ class Post(TimeStampedModel):
     thumbnail_url = models.URLField(blank=True, null=True, help_text='Size: 848x307')
     view_count = models.PositiveIntegerField(default=0)
     like_count = models.PositiveIntegerField(default=0)
+    published = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created']

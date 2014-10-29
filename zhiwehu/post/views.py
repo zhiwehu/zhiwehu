@@ -16,7 +16,7 @@ class PostListView(ListView):
     paginate_by = 5
 
     def get_queryset(self):
-        post_list = Post.objects.all()
+        post_list = Post.objects.filter(published=True)
 
         self.category = None
         category_slug = self.kwargs.get('category', None)
@@ -56,7 +56,7 @@ class PostListView(ListView):
         context['tag'] = self.tag
         context['year'] = self.year
         context['month'] = self.month
-        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values(
+        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).filter(published=True).values(
             'date_created').annotate(
             post_count=Count('id'))[:12]
         return context
@@ -80,7 +80,7 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         context['category_list'] = Category.objects.all()
         context['tags'] = Tag.objects.all()
-        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).values(
+        context['month_list'] = Post.objects.extra({'date_created': 'LAST_DAY(created)'}).filter(published=True).values(
             'date_created').annotate(
             post_count=Count('id'))[:12]
         return context
