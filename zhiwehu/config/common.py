@@ -247,6 +247,8 @@ class Common(Configuration):
     # the site admins on every HTTP 500 error when DEBUG=False.
     # See http://docs.djangoproject.com/en/dev/topics/logging for
     # more details on how to customize your logging configuration.
+    LOG_ROOT_PATH = join(BASE_DIR, 'logs')
+
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
@@ -260,12 +262,25 @@ class Common(Configuration):
                 'level': 'ERROR',
                 'filters': ['require_debug_false'],
                 'class': 'django.utils.log.AdminEmailHandler'
-            }
+            },
+            'log_file': {
+                'level': 'DEBUG',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'filename': join(LOG_ROOT_PATH, 'debug.log'),
+                'maxBytes': 1024 * 1024 * 5,  # 5 MB
+                'backupCount': 5,
+                #'formatter': 'verbose',
+            },
         },
         'loggers': {
             'django.request': {
                 'handlers': ['mail_admins'],
                 'level': 'ERROR',
+                'propagate': True,
+            },
+            'zhiwehu.logfile': {
+                'handlers': ['log_file'],
+                'level': 'DEBUG',
                 'propagate': True,
             },
         }

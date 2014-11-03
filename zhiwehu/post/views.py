@@ -4,10 +4,12 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
 from django.views.generic import ListView, DetailView
 from django.utils.translation import ugettext_lazy as _
+from django.utils.log import getLogger
 from taggit.models import Tag
 from .models import Category, Post, Comment
 from .forms import CommentForm
 
+logger = getLogger('zhiwehu.logfile')
 
 class PostListView(ListView):
     model = Post
@@ -39,10 +41,12 @@ class PostListView(ListView):
             post_list = post_list.filter(tags__in=[self.tag])
 
         self.year = self.kwargs.get('year', None)
+        logger.debug('self.year = %s' % self.year)
         if self.year:
             post_list = post_list.filter(created__year=self.year)
 
         self.month = self.kwargs.get('month', None)
+        logger.debug('self.month = %s' % self.month)
         if self.month:
             post_list = post_list.filter(created__month=self.month)
 
