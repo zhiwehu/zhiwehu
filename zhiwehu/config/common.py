@@ -153,7 +153,7 @@ class Common(Configuration):
     USE_L10N = True
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
-    USE_TZ = False
+    USE_TZ = True
     # END GENERAL CONFIGURATION
 
     # TEMPLATE CONFIGURATION
