@@ -95,3 +95,6 @@ msgstr "这篇文章不存在"
 
 msgid "post data error"
 msgstr "数据错误"
+
+msgid "Read Count"
+msgstr "阅读次数"
