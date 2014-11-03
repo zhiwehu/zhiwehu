@@ -15,6 +15,9 @@ env.code_dir = '/home/ecs-user/zhiwehu'
 env.project_div = '/home/ecs-user/zhiwehu/zhiwehu'
 env.virtualenv = '/home/ecs-user/env'
 
+def init():
+    with cd(env.project_div):
+        run('mkdir -p logs')
 
 def pull():
     "Pull new code"
@@ -71,6 +74,7 @@ def restart():
 
 
 def deploy():
+    init()
     pull()
     update_requirements()
     syncdb()
