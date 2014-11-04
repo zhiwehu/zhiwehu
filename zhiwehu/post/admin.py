@@ -16,6 +16,7 @@ class PostForm(forms.ModelForm):
 
 
 class PostAdmin(admin.ModelAdmin):
+    readonly_fields = ['author']
     list_display = [
         'title', 'category', 'author', 'summary', 'view_count', 'like_count', 'created', 'modified'
     ]
@@ -23,6 +24,11 @@ class PostAdmin(admin.ModelAdmin):
         'title', 'content'
     ]
     form = PostForm
+
+    def save_model(self, request, obj, form, change):
+        if getattr(obj, 'author', None) is None:
+            obj.author = request.user
+        obj.save()
 
 
 class CategoryAdmin(admin.ModelAdmin):
