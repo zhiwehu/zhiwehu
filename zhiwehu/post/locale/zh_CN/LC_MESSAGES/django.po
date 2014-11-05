@@ -78,7 +78,7 @@ msgstr "数据错误"
 #~ msgstr "阅读"
 
 #~ msgid "Read Count"
-#~ msgstr "阅读"
+#~ msgstr "阅读次数"
 
 #~ msgid "Do it after you learn it"
 #~ msgstr "知,而后为之,不亦乐乎?"

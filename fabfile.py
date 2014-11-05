@@ -59,6 +59,11 @@ def rebuild_index():
         with prefix("source %s/bin/activate" % (env.virtualenv)):
             run('python manage.py rebuild_index --configuration=Production --noinput')
 
+def compilemessages():
+    with cd(env.project_div):
+        with prefix("source %s/bin/activate" % (env.virtualenv)):
+            run('python manage.py compilemessages --configuration=Production')
+
 
 def restart():
     "Restart (or just start) the server"
@@ -73,11 +78,11 @@ def restart():
 
 
 def deploy():
-    init()
     pull()
     update_requirements()
     syncdb()
     migrate()
     collectstatic()
     rebuild_index()
+    compilemessages()
     restart()
