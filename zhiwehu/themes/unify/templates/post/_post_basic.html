@@ -30,6 +30,8 @@
 </div>
 {% if post.thumbnail_url %}
     <div class="blog-img">
-        <img class="img-responsive" src="{{ post.thumbnail_url }}" alt="{{ post.title }}">
+        <a href="{% url "post_detail" post.slug %}">
+            <img class="img-responsive" src="{{ post.thumbnail_url }}" alt="{{ post.title }}">
+        </a>
     </div>
 {% endif %}
