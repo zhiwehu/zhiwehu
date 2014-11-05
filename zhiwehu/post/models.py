@@ -85,4 +85,5 @@ class Comment(TimeStampedModel):
             'user_name': self.user_name,
             'user_email': self.user_email,
             'user_website': self.user_website,
+            'approved': self.approved,
         }
