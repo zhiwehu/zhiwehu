@@ -10,7 +10,6 @@ from fabric.api import *
 
 env.hosts = ['121.40.126.220']
 env.user = 'ecs-user'
-env.password = 'Bclt2014'
 env.code_dir = '/home/ecs-user/zhiwehu'
 env.project_div = '/home/ecs-user/zhiwehu/zhiwehu'
 env.virtualenv = '/home/ecs-user/env'
