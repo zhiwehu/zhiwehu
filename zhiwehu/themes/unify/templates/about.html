@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% load i18n staticfiles bootstrap3 %}
+
+{% block content %}
+    <!--=== About Me Img ===-->
+    <div class="container content">
+
+        <!-- About Me -->
+        <div class="row about-my-goals margin-bottom-20">
+            <div class="col-md-12 md-margin-bottom-20">
+                <h2 class="heading-md"><span class="color-green">知为乎</span>: 知,而后为之,不亦乐乎?</h2>
+
+                <p>
+                    这是我的个人网站，zhiwehu.com这个域名来自我的名字。中文名称叫：知为乎，取的意思是"知，而为后为，不亦乐乎?"
+                </p>
+            </div>
+
+        </div>
+        <!-- End About Me -->
+        <div class="row about-me margin-bottom-40">
+            <div class="col-md-4 shadow-wrapper md-margin-bottom-20">
+                <div class="box-shadow shadow-effect-2">
+                    <img class="img-responsive" src="{% static "img/jeffrey.jpg" %}" alt="Jeffrey Hu">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="overflow-h">
+                    <div class="pull-left">
+                        <h2>Jeffrey Hu</h2>
+                        <span>Founder and Lead Developer of Lettoo software Technology, Inc.</span>
+                    </div>
+
+                </div>
+                <p>Hi, I'm Jeffrey. I'm a backend developer but also have strong front-end skills. My goal is to be a
+                    full-stack developer. I like to make applications that are simple, but powerful.</p>
+
+                <p>I have more than 12 years work experience on IT , software, web area. I worked in Huawei and Cisco as
+                    a senior developer and a project manager before I became a freelancer. </p>
+
+                <p>And now I have a small but great team. We build web, restful api, ios and android apps based on
+                    html5. We have built several projects from scratch and made them to get the investment. I used to
+                    worked in New York City to help a startup company to build the backend service.</p>
+            </div>
+            <div class="col-md-3">
+                <!-- Contacts -->
+                <div class="headline"><h2>Contacts</h2></div>
+                <ul class="list-unstyled who margin-bottom-30">
+                    <li><a href="#"><i class="fa fa-home"></i>Gui 12-207, Songdu Xihu Huayuan, Hefei, Anhui, China</a></li>
+                    <li><a href="#"><i class="fa fa-envelope"></i>zhiwehu AT gmail.com</a></li>
+                    <li><a href="#"><i class="fa fa-phone"></i>86(551) 65372312</a></li>
+                    <li><a href="#"><i class="fa fa-globe"></i>http://www.zhiwehu.com</a></li>
+                    <li><a href="#"><i class="fa fa-compass"></i>http://www.lettoosoft.com</a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i>https://www.facebook.com/zhiwehu</a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i>https://twitter.com/zhiwehu</a></li>
+                    <li><a href="#"><i class="fa fa-github"></i>http://github.com/zhiwehu/</a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i>http://www.linkedin.com/pub/jeffrey-hu/45/98/51b</a></li>
+                    <li><a href="#"><i class="fa fa-link"></i>https://www.elance.com/s/zhiweihu/</a></li>
+
+                </ul>
+            </div>
+            <!--/col-md-3-->
+        </div>
+
+
+    </div>
+    <!--=== End About Me Img ===-->
+
+{% endblock %}
