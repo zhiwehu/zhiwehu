@@ -6,7 +6,8 @@
 <!--[if !IE]><!-->
 <html lang="en"> <!--<![endif]-->
 <head>
-    <title>{% block title %}{% trans "zhiwehu" %}{% endblock %} | {% block subtitle %}{% trans "Do it after you learn it" %}{% endblock %}</title>
+    <title>{% block title %}{% trans "zhiwehu" %}{% endblock %} |
+        {% block subtitle %}{% trans "Do it after you learn it" %}{% endblock %}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -97,15 +98,16 @@
     <div class="copyright">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div style="text-align: center">
                     <p>
                         2014 &copy; {% trans "zhiwehu" %}. ALL Rights Reserved.
                     </p>
-                </div>
-                <div class="col-md-6">
-                    {% comment %}<a href="/">
-                        <img class="pull-right" id="logo-footer" src="{% static 'img/logo2-default.png' %}" alt="{% trans "zhiwehu" %}">
-                    </a>{% endcomment %}
+
+                    <p>
+                        <a href="http://www.miitbeian.gov.cn/">
+                            皖ICP备14019862号
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
