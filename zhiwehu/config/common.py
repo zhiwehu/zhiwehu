@@ -293,10 +293,13 @@ class Common(Configuration):
     # Tinymce
     # TINYMCE_JS_URL = 'http://debug.example.org/tiny_mce/tiny_mce_src.js'
     TINYMCE_DEFAULT_CONFIG = {
-        'plugins': 'table,spellchecker,paste,searchreplace,code',
+        'plugins': 'table,spellchecker,paste,searchreplace,codehighlighting',
         'theme': 'advanced',
         'cleanup_on_startup': True,
         'custom_undo_redo_levels': 10,
+        'theme_advanced_buttons3' : "codehighlighting",
+        'extended_valid_elements' : "pre[class|name]",
+
     }
     TINYMCE_SPELLCHECKER = True
     TINYMCE_COMPRESSOR = False
