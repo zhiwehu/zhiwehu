@@ -62,14 +62,14 @@ def rebuild_index():
 def compilemessages():
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
-            run('python manage.py compilemessages --configuration=Production')
+            run('python manage.py compilemessages -l zh-CN --configuration=Production')
 
 
 def restart():
     "Restart (or just start) the server"
     with cd(env.project_div):
         with prefix("source %s/bin/activate" % (env.virtualenv)):
-            run('supervisorctl restart gunicorn')
+            run('supervisorctl restart all')
 
     run('sudo service nginx restart')
 
